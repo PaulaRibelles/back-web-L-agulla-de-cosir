@@ -14,6 +14,13 @@ module.exports = (sequelize, DataTypes) => {
       Client.belongsTo(models.User, {
         foreignKey: 'user_id'
       });
+      Client.belongsToMany(models.Dressmaker, {
+        through: 'appointments',
+        foreignKey: 'client_id'
+      });
+      Client.hasMany(models.Appointment,{
+        foreignKey: "client_id"
+      });
     }
   }
   Client.init({

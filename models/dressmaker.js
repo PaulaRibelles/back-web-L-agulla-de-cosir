@@ -14,6 +14,13 @@ module.exports = (sequelize, DataTypes) => {
       Dressmaker.belongsTo(models.User,{
         foreignKey: 'user_id'
       });
+      Dressmaker.belongsToMany(models.Client,{
+        through: 'appointments',
+        foreignKey: 'dressmaker_id'
+      });
+      Dressmaker.hasMany(models.Appointment,{
+        foreignKey: "dressmaker_id"
+      });
     }
   }
   Dressmaker.init({
