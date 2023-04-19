@@ -15,9 +15,9 @@ module.exports = {
         phone: "600000000",
         email: "paula@paula.com",
         password: bcrypt.hashSync("000000", 10),
-        role_id: 2,
-        createdAt: "2023-03-03 12:00:00",
-        updatedAt: "2023-03-03 12:00:00"
+        role_id: 1,
+        createdAt: "2023-04-19 12:00:00",
+        updatedAt: "2023-04-19 12:00:00"
       },
       {
         name: "Julia",
@@ -27,9 +27,9 @@ module.exports = {
         phone: "600000001",
         email: "julia@julia.com",
         password: bcrypt.hashSync("111111", 10),
-        role_id: 1,
-        createdAt: "2023-03-03 12:00:00",
-        updatedAt: "2023-03-03 12:00:00"
+        role_id: 2,
+        createdAt: "2023-04-20 12:00:00",
+        updatedAt: "2023-04-20 12:00:00"
       },
       {
         name: "Carles",
@@ -39,9 +39,9 @@ module.exports = {
         phone: "600000002",
         email: "carles@carles.com",
         password: bcrypt.hashSync("111111", 10),
-        role_id: 1,
-        createdAt: "2023-03-03 12:00:00",
-        updatedAt: "2023-03-03 12:00:00"
+        role_id: 2,
+        createdAt: "2023-04-20 12:00:00",
+        updatedAt: "2023-04-20 12:00:00"
       },
       {
         name: "Álvaro",
@@ -51,9 +51,9 @@ module.exports = {
         phone: "600000003",
         email: "alvaro@alvaro.com",
         password: bcrypt.hashSync("111111", 10),
-        role_id: 1,
-        createdAt: "2023-03-03 12:00:00",
-        updatedAt: "2023-03-03 12:00:00"
+        role_id: 2,
+        createdAt: "2023-04-20 12:00:00",
+        updatedAt: "2023-04-20 12:00:00"
       },
       {
         name: "Ana",
@@ -63,9 +63,9 @@ module.exports = {
         phone: "600000004",
         email: "ana@ana.com",
         password: bcrypt.hashSync("111111", 10),
-        role_id: 1,
-        createdAt: "2023-03-03 12:00:00",
-        updatedAt: "2023-03-03 12:00:00"
+        role_id: 2,
+        createdAt: "2023-04-20 12:00:00",
+        updatedAt: "2023-04-20 12:00:00"
       },
       {
         name: "Alberto",
@@ -75,9 +75,9 @@ module.exports = {
         phone: "611111111",
         email: "alberto@alberto.com",
         password: bcrypt.hashSync("123456", 10),
-        role_id: 1,
-        createdAt: "2023-03-03 12:00:00",
-        updatedAt: "2023-03-03 12:00:00"
+        role_id: 2,
+        createdAt: "2023-04-20 12:00:00",
+        updatedAt: "2023-04-20 12:00:00"
       },
       {
       name: "Natalia",
@@ -87,9 +87,9 @@ module.exports = {
       phone: "622222222",
       email: "natalia@natalia.com",
       password: bcrypt.hashSync("123456", 10),
-      role_id: 1,
-      createdAt: "2023-03-03 12:00:00",
-      updatedAt: "2023-03-03 12:00:00"
+      role_id: 2,
+      createdAt: "2023-04-20 12:00:00",
+      updatedAt: "2023-04-20 12:00:00"
     },
     {
       name: "Marco",
@@ -99,9 +99,9 @@ module.exports = {
       phone: "633333333",
       email: "marco@marco.com",
       password: bcrypt.hashSync("123456", 10),
-      role_id: 1,
-      createdAt: "2023-03-03 12:00:00",
-      updatedAt: "2023-03-03 12:00:00"
+      role_id: 2,
+      createdAt: "2023-04-20 12:00:00",
+      updatedAt: "2023-04-20 12:00:00"
     },
     {
       name: "Jessica",
@@ -111,9 +111,9 @@ module.exports = {
       phone: "644444444",
       email: "jessica@jessica.com",
       password: bcrypt.hashSync("123456", 10),
-      role_id: 1,
-      createdAt: "2023-03-03 12:00:00",
-      updatedAt: "2023-03-03 12:00:00"
+      role_id: 2,
+      createdAt: "2023-04-20 12:00:00",
+      updatedAt: "2023-04-20 12:00:00"
     },
     {
       name: "Dolores",
@@ -123,9 +123,9 @@ module.exports = {
       phone: "655555555",
       email: "dolores@dolores.com",
       password: bcrypt.hashSync("123456", 10),
-      role_id: 1,
-      createdAt: "2023-03-03 12:00:00",
-      updatedAt: "2023-03-03 12:00:00"
+      role_id: 2,
+      createdAt: "2023-04-20 12:00:00",
+      updatedAt: "2023-04-20 12:00:00"
     },
     {
       name: "Rafael",
@@ -135,9 +135,9 @@ module.exports = {
       phone: "666666666",
       email: "rafael@rafael.com",
       password: bcrypt.hashSync("123456", 10),
-      role_id: 1,
-      createdAt: "2023-03-03 12:00:00",
-      updatedAt: "2023-03-03 12:00:00"
+      role_id: 2,
+      createdAt: "2023-04-20 12:00:00",
+      updatedAt: "2023-04-20 12:00:00"
     },
     {
       name: "María",
@@ -147,9 +147,9 @@ module.exports = {
       phone: "677777777",
       email: "maria@maria.com",
       password: bcrypt.hashSync("123456", 10),
-      role_id: 1,
-      createdAt: "2023-03-03 12:00:00",
-      updatedAt: "2023-03-03 12:00:00"
+      role_id: 2,
+      createdAt: "2023-04-20 12:00:00",
+      updatedAt: "2023-04-20 12:00:00"
     },
     {
       name: "Víctor",
@@ -159,9 +159,9 @@ module.exports = {
       phone: "688888888",
       email: "victor@victor.com",
       password: bcrypt.hashSync("123456", 10),
-      role_id: 1,
-      createdAt: "2023-03-03 12:00:00",
-      updatedAt: "2023-03-03 12:00:00"
+      role_id: 2,
+      createdAt: "2023-04-20 12:00:00",
+      updatedAt: "2023-04-20 12:00:00"
     },
     {
       name: "Eduardo",
@@ -171,9 +171,9 @@ module.exports = {
       phone: "699999999",
       email: "eduardo@eduardo.com",
       password: bcrypt.hashSync("123456", 10),
-      role_id: 1,
-      createdAt: "2023-03-03 12:00:00",
-      updatedAt: "2023-03-03 12:00:00"
+      role_id: 2,
+      createdAt: "2023-04-20 12:00:00",
+      updatedAt: "2023-04-20 12:00:00"
     },
     {
       name: "Estela",
@@ -183,9 +183,9 @@ module.exports = {
       phone: "610101010",
       email: "estela@estela.com",
       password: bcrypt.hashSync("123456", 10),
-      role_id: 1,
-      createdAt: "2023-03-03 12:00:00",
-      updatedAt: "2023-03-03 12:00:00"
+      role_id: 2,
+      createdAt: "2023-04-20 12:00:00",
+      updatedAt: "2023-04-20 12:00:00"
     },
     ], {});
   },
