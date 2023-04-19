@@ -15,6 +15,9 @@ module.exports = {
       surname: {
         type: Sequelize.STRING
       },
+      dni: {
+        type: Sequelize.STRING
+      },
       city: {
         type: Sequelize.STRING
       },
