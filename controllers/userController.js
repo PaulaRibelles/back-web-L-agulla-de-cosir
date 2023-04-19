@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 
 const userController = {};
 
+//User PROFILE
+
 userController.profile = async(req, res) => {
     try {
         const userId = req.userId;
@@ -13,6 +15,9 @@ userController.profile = async(req, res) => {
         return res.status(500).send(error.message)
     }
 }
+
+
+//User UPDATE
 
 userController.updateUser = async (req, res) => {
     try {
