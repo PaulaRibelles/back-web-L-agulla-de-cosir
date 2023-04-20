@@ -21,7 +21,8 @@ module.exports = (sequelize, DataTypes) => {
   }
   Dressmaker.init({
     speciality: DataTypes.STRING,
-    user_id: DataTypes.INTEGER
+    image_url: DataTypes.STRING,
+    user_id: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Dressmaker',

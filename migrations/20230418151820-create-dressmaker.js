@@ -12,6 +12,9 @@ module.exports = {
       speciality: {
         type: Sequelize.STRING
       },
+      image_url: {
+        type: Sequelize.STRING
+      },
       user_id: {
         type: Sequelize.INTEGER,
         references:{
