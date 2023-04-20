@@ -90,4 +90,128 @@ appointmentController.deleteAppointments = async (req, res) => {
 };
 
 
+//GET Client Appointment
+
+
+appointmentController.getClientAppointments = async (req, res) => {
+    try{
+
+        const client = await Client.findOne({where: {user_id: req.userId}})
+
+        if(!client){
+            return res.send("You are not a client")
+        }
+
+        const appointment = await Appointment.findAll({
+            where: {client_id: client.id},
+            include: [
+                {
+                    model: Client,
+                    attributes: {
+                        exclude: ["createdAt", "updatedAt"]
+                    }
+                },
+                {
+                    model: Dressmaker,
+                    attributes: {
+                        exclude: ["user_id", "createdAt", "updatedAt"]
+                    },
+                    include: {
+                        model: User,
+                        attributes: {
+                            exclude: ["password", "role_id", "createdAt", "updatedAt"]
+                        }
+                    }
+                }
+            ],
+            attributes: {
+                exclude: ["client_id", "dressmaker_ide", "createdAt", "updatedAt"]
+            }
+        });
+        return res.json(appointments);
+        } catch (error) {
+            console.error(error);
+        return res.status(500).send(error.message);
+    }
+};
+
+
+//GET Dressmaker Appointment 
+
+
+appointmentController.getDressmakerAppointments = async (req, res) => {
+    try {
+
+        const dressmaker = await Dressmaker.findOne({where: {user_id: req.userId}})
+
+        if(!dressmaker){
+            return res.send("You are not a dressmaker")
+        }
+        console.log(dressmaker);
+    const appointments = await Appointment.findAll({
+        where: { dressmaker_id: dressmaker.id },
+        include: [
+        {
+            model: Client,
+            attributes: { exclude: ["createdAt", "updatedAt"] },
+            include: {
+                model: User,
+                attributes: { exclude: ["password", "createdAt", "updatedAt"] },
+            },
+        },
+        {
+            model: Dressmaker,
+            attributes: { exclude: ["user_id", "createdAt", "updatedAt"] },
+            include: {
+                model: User,
+                attributes: { exclude: ["password", "createdAt", "updatedAt"] },
+            },
+        },
+        ],
+    });
+
+    return res.json(appointments);
+    } catch (error) {
+    console.error(error);
+    return res.status(500).send(error.message);
+    }
+};
+
+
+//GET All Appointments
+
+
+appointmentController.getAllAppointments = async (req, res) => {
+    try{
+        const appointments = await Appointment.findAll({
+            include: [
+            {
+                model: Client,
+                attributes: { exclude: ["createdAt", "updatedAt"] },
+                include: {
+                    model: User,
+                    attributes: { exclude: ["password", "createdAt", "updatedAt"] },
+                },
+            },
+            {
+                model: Dressmaker,
+                attributes: { exclude: ["user_id", "createdAt", "updatedAt"] },
+                include: {
+                    model: User,
+                    attributes: { exclude: ["password", "createdAt", "updatedAt"] },
+                },
+            },
+            ],
+        });
+
+        console.log(appointments)
+
+    return res.json(appointments);
+    } catch (error) {
+    console.error(error);
+    return res.status(500).send(error.message);
+    }
+}
+
+
 module.exports = appointmentController;
