@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const userController = {};
 
-//User PROFILE
+//PROFILE
 
 userController.profile = async(req, res) => {
     try {
@@ -17,7 +17,7 @@ userController.profile = async(req, res) => {
 }
 
 
-//User UPDATE
+//UPDATE Profile
 
 userController.updateUser = async (req, res) => {
     try {
@@ -54,6 +54,32 @@ userController.updateUser = async (req, res) => {
     } catch (error) {
         return res.status(500).send(error.message)
     }
-}
+};
+
+
+//DELETE Profile
+
+
+userController.deleteUser = async (req, res) => {
+    try {
+        const userId = req.params.id;
+
+        const deletedUser = await User.destroy({
+        where: {
+            id: userId
+        },
+    });
+
+    if (!deletedUser) {
+        return res.send("User not found");
+    }
+
+    return res.send("User deleted successfully");
+    } catch (error) {
+    console.error(error);
+    return res.status(500).send(error.message);
+    }
+};
+
 
 module.exports = userController;
