@@ -7,3 +7,6 @@ const verifyToken = require('../middlewares/verifyToken');
 router.post('/create', verifyToken, appointmentController.createAppointments)
 router.put('/update/:id', verifyToken, appointmentController.updateAppointments)
 router.delete('/delete/:id', verifyToken, appointmentController.deleteAppointments)
+
+
+module.exports = router;
