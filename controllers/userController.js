@@ -12,7 +12,13 @@ userController.profile = async(req, res) => {
 
         return res.json(user);
     } catch (error) {
-        return res.status(500).send(error.message)
+        return res.status(500).send(
+            {
+                success: false,
+                message: "Somenthing went wrong",
+                error_message: error.message
+            }
+        )
     }
 }
 
@@ -52,7 +58,13 @@ userController.updateUser = async (req, res) => {
 
         return res.send('User updated')
     } catch (error) {
-        return res.status(500).send(error.message)
+        return res.status(500).send(
+            {
+                success: false,
+                message: "Somenthing went wrong",
+                error_message: error.message
+            }
+        )
     }
 };
 
@@ -77,7 +89,13 @@ userController.deleteUser = async (req, res) => {
     return res.send("User deleted successfully");
     } catch (error) {
     console.error(error);
-    return res.status(500).send(error.message);
+    return res.status(500).send(
+        {
+            success: false,
+            message: "Somenthing went wrong",
+            error_message: error.message
+        }
+    );
     }
 };
 

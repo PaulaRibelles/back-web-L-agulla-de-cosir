@@ -21,9 +21,15 @@ appointmentController.createAppointments = async (req, res) => {
             client_id: client.id
         });
 
-    return res.json(newAppointment);
+        return res.json(newAppointment);
     } catch (error) {
-    return res.status(500).send(error.message);
+        return res.status(500).send(
+            {
+                success: false,
+                message: "Somenthing went wrong",
+                error_message: error.message
+            }
+        );
     }
 };
 
@@ -57,15 +63,21 @@ appointmentController.updateAppointments = async (req, res) => {
         if (!updatedAppointment){
             return res.send("Appointment not updated")
         }
-        return res.send("Appointment updated succesfuly");
-    } catch (error) {
+            return res.send("Appointment updated succesfuly");
+        } catch (error) {
         console.error(error);
-        return res.status(500).send(error.message);
+            return res.status(500).send(
+                {
+                    success: false,
+                    message: "Somenthing went wrong",
+                    error_message: error.message
+                }
+            );
     }
 };
 
 
-//DELETE Appointments
+// //DELETE Appointments
 
 
 appointmentController.deleteAppointments = async (req, res) => {
@@ -82,15 +94,21 @@ appointmentController.deleteAppointments = async (req, res) => {
         return res.send("Appointment not found");
     }
 
-    return res.send("Appointment deleted successfully");
+        return res.send("Appointment deleted successfully");
     } catch (error) {
     console.error(error);
-    return res.status(500).send(error.message);
+        return res.status(500).send(
+            {
+            success: false,
+            message: "Somenthing went wrong",
+            error_message: error.message
+            }
+        );
     }
 };
 
 
-//GET Client Appointment
+// //GET Client Appointment
 
 
 appointmentController.getClientAppointments = async (req, res) => {
@@ -102,41 +120,51 @@ appointmentController.getClientAppointments = async (req, res) => {
             return res.send("You are not a client")
         }
 
-        const appointment = await Appointment.findAll({
+        const clientAppointment = await Appointment.findAll({
             where: {client_id: client.id},
             include: [
                 {
                     model: Client,
-                    attributes: {
-                        exclude: ["createdAt", "updatedAt"]
+                    attributes:
+                    {
+                        exclude: ["id","user_id","client_id", "adress","createdAt", "updatedAt"]
                     }
                 },
                 {
                     model: Dressmaker,
-                    attributes: {
-                        exclude: ["user_id", "createdAt", "updatedAt"]
+                    attributes: 
+                    {
+                        exclude: ["id","user_id", "dressmaker_id", "createdAt", "updatedAt"]
                     },
-                    include: {
-                        model: User,
-                        attributes: {
-                            exclude: ["password", "role_id", "createdAt", "updatedAt"]
+                        include:
+                        {
+                            model: User,
+                            attributes: {
+                                exclude: ["id","password", "role_id", "user_id", "city", "dni", "createdAt", "updatedAt"]
+                            }
                         }
-                    }
-                }
+                },
             ],
             attributes: {
-                exclude: ["client_id", "dressmaker_ide", "createdAt", "updatedAt"]
+                exclude: ["role_id", "client_id", "dressmaker_id", "createdAt", "updatedAt"]
             }
         });
-        return res.json(appointments);
+
+    return res.json(clientAppointment);
         } catch (error) {
             console.error(error);
-        return res.status(500).send(error.message);
+        return res.status(500).send(
+            {
+                success: false,
+                message: "Somenthing went wrong",
+                error_message: error.message
+            }
+        );
     }
 };
 
 
-//GET Dressmaker Appointment 
+// //GET Dressmaker Appointment 
 
 
 appointmentController.getDressmakerAppointments = async (req, res) => {
@@ -148,59 +176,92 @@ appointmentController.getDressmakerAppointments = async (req, res) => {
             return res.send("You are not a dressmaker")
         }
         console.log(dressmaker);
-    const appointments = await Appointment.findAll({
-        where: { dressmaker_id: dressmaker.id },
-        include: [
-        {
-            model: Client,
-            attributes: { exclude: ["createdAt", "updatedAt"] },
-            include: {
-                model: User,
-                attributes: { exclude: ["password", "createdAt", "updatedAt"] },
-            },
-        },
-        {
-            model: Dressmaker,
-            attributes: { exclude: ["user_id", "createdAt", "updatedAt"] },
-            include: {
-                model: User,
-                attributes: { exclude: ["password", "createdAt", "updatedAt"] },
-            },
-        },
-        ],
+        const appointments = await Appointment.findAll({
+            where: { dressmaker_id: dressmaker.id },
+            include: [
+                {
+                    model: Client,
+                    attributes:
+                    { 
+                        exclude: ["id","user_id","client_id", "adress","createdAt", "updatedAt"]
+                    },
+                        include:
+                        {
+                            model: User,
+                            attributes: { 
+                                exclude: ["id","user_id", "role_id", "adress","password", "createdAt", "updatedAt"]
+                            }
+                        }
+                },
+                {
+                    model: Dressmaker,
+                    attributes:
+                    { 
+                        exclude: ["id","user_id", "dressmaker_id", "createdAt", "updatedAt"]
+                    },
+                        include: 
+                        {
+                            model: User,
+                            attributes: { 
+                                exclude: ["id","password", "role_id", "user_id", "city", "dni", "createdAt", "updatedAt"]
+                            }
+                        }
+                },
+            ],
+            attributes: {
+                exclude: ["role_id", "client_id", "dressmaker_id", "createdAt", "updatedAt"]
+            }
     });
 
     return res.json(appointments);
-    } catch (error) {
-    console.error(error);
-    return res.status(500).send(error.message);
+        } catch (error) {
+            console.error(error);
+    return res.status(500).send(
+        {
+            success: false,
+            message: "Somenthing went wrong",
+            error_message: error.message
+        }
+    );
     }
 };
 
 
-//GET All Appointments
+// //GET All Appointments
 
 
 appointmentController.getAllAppointments = async (req, res) => {
     try{
         const appointments = await Appointment.findAll({
             include: [
-            {
-                model: Client,
-                attributes: { exclude: ["createdAt", "updatedAt"] },
-                include: {
-                    model: User,
-                    attributes: { exclude: ["password", "createdAt", "updatedAt"] },
+                {
+                    model: Client,
+                    attributes: 
+                    { 
+                    exclude: ["createdAt", "updatedAt"] 
+                    },
+                        include: 
+                        {
+                            model: User,
+                            attributes: { 
+                                exclude: ["password", "createdAt", "updatedAt"] 
+                            },
+                        },
                 },
-            },
-            {
-                model: Dressmaker,
-                attributes: { exclude: ["user_id", "createdAt", "updatedAt"] },
-                include: {
-                    model: User,
-                    attributes: { exclude: ["password", "createdAt", "updatedAt"] },
+                {
+                    model: Dressmaker,
+                    attributes:
+                    { 
+                    exclude: ["user_id", "createdAt", "updatedAt"] 
+                    },
+                        include: 
+                        {
+                            model: User,
+                            attributes: { 
+                                exclude: ["password", "createdAt", "updatedAt"] 
+                            },
+                        },
                 },
-            },
             ],
         });
 
@@ -209,7 +270,13 @@ appointmentController.getAllAppointments = async (req, res) => {
     return res.json(appointments);
     } catch (error) {
     console.error(error);
-    return res.status(500).send(error.message);
+    return res.status(500).send(
+        {
+            success: false,
+            message: "Somenthing went wrong",
+            error_message: error.message
+        }
+    );
     }
 }
 

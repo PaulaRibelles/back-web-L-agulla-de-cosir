@@ -31,9 +31,20 @@ authController.register = async (req, res) => {
             }
         )
 
-        return res.json(newUser)
+        return res.json(
+            {
+                success: true,
+                message: "Register successfully",
+            }
+        )
     } catch (error) {
-        return res.status(500).send(error.message)
+        return res.status(500).send(
+            {
+                success: false,
+                message: "Somenthing went wrong",
+                error_message: error.message
+            }
+        )
     }
 }
 
@@ -43,6 +54,7 @@ authController.register = async (req, res) => {
 
 authController.login = async (req, res) => {
     try{
+        
         const { email, password } = req.body;
 
         const user = await User.findOne(

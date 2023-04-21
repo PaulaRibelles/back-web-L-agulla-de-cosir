@@ -6,6 +6,10 @@ const verifyToken = require('../middlewares/verifyToken');
 //ENDPOINTS
 
 router.get('/profile/', verifyToken, userController.profile)
+
 router.put('/update/', verifyToken, userController.updateUser)
+
+router.delete('/delete/', verifyToken, userController.deleteUser)
+
 
 module.exports = router;

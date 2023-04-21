@@ -1,6 +1,8 @@
 const router = require('express').Router();
-const appointmentController = require('../controllers/appointmentController');
+const appointmentController = require('../controllers/appointmentControllers');
 const verifyToken = require('../middlewares/verifyToken');
+const isAdmin = require('../middlewares/isAdmin');
+
 
 //ENDPOINTS
 
