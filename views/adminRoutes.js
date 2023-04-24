@@ -6,7 +6,7 @@ const isAdmin = require('../middlewares/isAdmin');
 
 //ENDPOINTS
 
-router.post('/createDressmaker', verifyToken, isAdmin, function(req,res){adminController.createDressmakers});
+router.post('/createDressmaker', verifyToken, isAdmin, adminController.createDressmakers);
 
 
 module.exports = router;
