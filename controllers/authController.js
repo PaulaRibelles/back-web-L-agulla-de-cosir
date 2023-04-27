@@ -38,7 +38,7 @@ authController.register = async (req, res) => {
             }
         )
     } catch (error) {
-        return res.status(500).send(
+        return res.status(500).json(
             {
                 success: false,
                 message: "Somenthing went wrong",

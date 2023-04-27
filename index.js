@@ -7,7 +7,10 @@ require('dotenv').config();
 
 const PORT = 5000;
 
+app.use(cors())
 app.use(express.json());
+
+const router = require('./router');
 app.use(router);
 
 app.listen(PORT, () =>{
