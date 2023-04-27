@@ -31,12 +31,7 @@ authController.register = async (req, res) => {
             }
         )
 
-        return res.json(
-            {
-                success: true,
-                message: "Register successfully",
-            }
-        )
+        return res.json(newUser)
     } catch (error) {
         return res.status(500).json(
             {
