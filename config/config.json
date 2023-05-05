@@ -2,10 +2,10 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
-    "database": "l-agulla-de-cosir",
-    "host": "127.0.0.1",
-    "port": "3306",
+    "password": "qGy7dl1jKdPDNfQwMAC0",
+    "database": "railway",
+    "host": "containers-us-west-44.railway.app",
+    "port": "5901",
     "dialect": "mysql"
   },
   "test": {
