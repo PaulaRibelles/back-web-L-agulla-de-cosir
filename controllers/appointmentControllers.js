@@ -146,7 +146,7 @@ appointmentController.getClientAppointments = async (req, res) => {
                 },
             ],
             attributes: {
-                exclude: ["role_id", "client_id", "dressmaker_id", "createdAt", "updatedAt"]
+                exclude: ["id", "role_id", "client_id", "dressmaker_id", "createdAt", "updatedAt"]
             }
         });
 
