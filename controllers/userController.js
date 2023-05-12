@@ -1,4 +1,4 @@
-const { User } = require("../models")
+const { Client, Dressmaker, User } = require("../models")
 const bcrypt = require('bcrypt');
 
 const userController = {};
@@ -71,7 +71,6 @@ userController.updateUser = async (req, res) => {
 
 //DELETE Profile
 
-
 userController.deleteUser = async (req, res) => {
     try {
         const userId = req.params.id;
@@ -99,5 +98,55 @@ userController.deleteUser = async (req, res) => {
     }
 };
 
+
+//GET All Users 
+
+userController.getAllUsers = async (req, res) => {
+    try {
+        const allUsers = await User.findAll ({
+            include: [
+                {
+                    model: Client,
+                    attributes: 
+                    { 
+                    exclude: ["createdAt", "updatedAt"] 
+                    },
+                        include: 
+                        {
+                            model: User,
+                            attributes: { 
+                                exclude: ["password", "createdAt", "updatedAt"] 
+                            },
+                        },
+                },
+                {
+                    model: Dressmaker,
+                    attributes:
+                    { 
+                    exclude: ["user_id", "createdAt", "updatedAt"] 
+                    },
+                        include: 
+                        {
+                            model: User,
+                            attributes: { 
+                                exclude: ["password", "createdAt", "updatedAt"] 
+                            },
+                        },
+                }
+            ],
+        });
+
+        return res.json(allUsers);
+    } catch (error) {
+    console.error(error);
+    return res.status(500).send(
+        {
+            success: false,
+            message: "Somenthing went wrong",
+            error_message: error.message
+        }
+    );
+    }
+}
 
 module.exports = userController;

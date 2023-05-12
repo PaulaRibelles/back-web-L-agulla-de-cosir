@@ -265,8 +265,6 @@ appointmentController.getAllAppointments = async (req, res) => {
             ],
         });
 
-        console.log(appointments)
-
     return res.json(appointments);
     } catch (error) {
     console.error(error);
