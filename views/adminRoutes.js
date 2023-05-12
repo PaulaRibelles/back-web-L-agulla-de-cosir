@@ -10,4 +10,6 @@ router.post('/createDressmaker', verifyToken, isAdmin, adminController.createDre
 
 router.put('/updateDressmaker/:id', verifyToken, isAdmin, adminController.updateDressmakers);
 
+router.delete('/deleteDressmaker/:id', verifyToken, isAdmin, adminController.deleteDressmakers);
+
 module.exports = router;

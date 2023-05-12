@@ -68,3 +68,32 @@ adminController.updateDressmakers = async (req, res) => {
         )
     }
 };
+
+
+//DELETE Dressmaker
+
+adminController.deleteDressmakers = async (req, res) => {
+    try {
+        const dressmakersId = req.params.id;
+        const deleteDressmakers = await Dressmaker.destroy({
+            where: {
+                id: dressmakersId
+            },
+        });
+
+        if (!deleteDressmakers) {
+            return res.send('Dressmaker not deleted')
+        }
+
+        return res.send('Dressmaker deleted successfully')
+    } catch (error) {
+        return res.status(500).send(
+            {
+                success: false,
+                message: "Somenthing went wrong",
+                error_message: error.message
+            }
+        )
+
+    }
+}
