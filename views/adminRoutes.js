@@ -6,6 +6,8 @@ const isAdmin = require('../middlewares/isAdmin');
 
 //ENDPOINTS
 
+router.get('/getDressmaker', verifyToken, isAdmin, adminController.getDressmakers);
+
 router.post('/createDressmaker', verifyToken, isAdmin, adminController.createDressmakers);
 
 router.put('/updateDressmaker/:id', verifyToken, isAdmin, adminController.updateDressmakers);

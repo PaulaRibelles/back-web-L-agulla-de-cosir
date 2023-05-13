@@ -175,7 +175,7 @@ appointmentController.getDressmakerAppointments = async (req, res) => {
         if(!dressmaker){
             return res.send("You are not a dressmaker")
         }
-        console.log(dressmaker);
+        
         const appointments = await Appointment.findAll({
             where: { dressmaker_id: dressmaker.id },
             include: [

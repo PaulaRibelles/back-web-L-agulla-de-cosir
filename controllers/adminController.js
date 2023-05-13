@@ -1,4 +1,4 @@
-const { Dressmaker } = require("../models");
+const { User, Dressmaker } = require("../models");
 const adminController = {};
 
 //CREATE Dressmakers
@@ -96,4 +96,35 @@ adminController.deleteDressmakers = async (req, res) => {
         )
 
     }
-}
+};
+
+
+//GET Dressmakers
+adminController.getDressmakers = async (req, res) => {
+    try {
+        const allDressmakers = await Dressmaker.findAll ({
+            include: [
+                {
+                    model: User,
+                    attributes:
+                    { 
+                    exclude: ["createdAt", "updatedAt"] 
+                    },
+                }
+            ],
+        });
+
+        return res.json(allDressmakers);
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send(
+        {
+            success: false,
+            message: "Somenthing went wrong",
+            error_message: error.message
+        }
+        );
+    }
+};
+
+
