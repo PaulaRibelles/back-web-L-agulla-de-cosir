@@ -17,14 +17,18 @@ module.exports = {
         references:{
           model: "Clients",
           key: "id"
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete:'CASCADE',
       },
       dressmaker_id: {
         type: Sequelize.INTEGER,
         references:{
           model: "Dressmakers",
           key:"id"
-        }
+        },
+        onUpdate: 'CASCADE',
+        onDelete:'CASCADE',
       },
       createdAt: {
         allowNull: false,

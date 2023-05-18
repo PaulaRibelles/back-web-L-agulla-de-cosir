@@ -28,8 +28,6 @@ adminController.createDressmakers = async (req, res) => {
     }
 };
 
-module.exports = adminController;
-
 
 //UPDATE Dressmaker
 
@@ -127,4 +125,4 @@ adminController.getDressmakers = async (req, res) => {
     }
 };
 
-
+module.exports = adminController;
